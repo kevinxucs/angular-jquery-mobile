@@ -53,6 +53,11 @@ module.exports = function (grunt) {
                 }
             }
         },
+        open: {
+            dev: {
+                url: "http://localhost:<%= connect.dev.options.port %>"
+            }
+        },
         copy: {
             dist: {
                 files: [
@@ -266,6 +271,7 @@ module.exports = function (grunt) {
         } else if (target === "testE2E") {
             tasks.push("karma:e2e");
         } else {
+            tasks.push("open:dev");
             tasks.push("watch:server");
         }
 
